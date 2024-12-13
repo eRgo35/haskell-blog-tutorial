@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -e
-if [[ ! -d "/home/mike/repos/blog-haskell" ]]; then
+if [[ ! -d "/home/mike/repos/haskell-blog-tutorial" ]]; then
   echo "Cannot find source directory; Did you move it?"
-  echo "(Looking for "/home/mike/repos/blog-haskell")"
+  echo "(Looking for "/home/mike/repos/haskell-blog-tutorial")"
   echo 'Cannot force reload with this script - use "direnv reload" manually and then try again'
   exit 1
 fi
 
 # rebuild the cache forcefully
-_nix_direnv_force_reload=1 direnv exec "/home/mike/repos/blog-haskell" true
+_nix_direnv_force_reload=1 direnv exec "/home/mike/repos/haskell-blog-tutorial" true
 
 # Update the mtime for .envrc.
 # This will cause direnv to reload again - but without re-building.
-touch "/home/mike/repos/blog-haskell/.envrc"
+touch "/home/mike/repos/haskell-blog-tutorial/.envrc"
 
 # Also update the timestamp of whatever profile_rc we have.
 # This makes sure that we know we are up to date.
-touch -r "/home/mike/repos/blog-haskell/.envrc" "/home/mike/repos/blog-haskell/.direnv"/*.rc
+touch -r "/home/mike/repos/haskell-blog-tutorial/.envrc" "/home/mike/repos/haskell-blog-tutorial/.direnv"/*.rc
