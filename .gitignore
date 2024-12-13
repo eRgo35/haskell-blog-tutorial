@@ -1,2 +1,3 @@
 .dirnev/
 *.o
+*.hi
